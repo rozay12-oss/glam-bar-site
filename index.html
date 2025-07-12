@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mandie Shop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+
+  <header class="top-bar">
+  <div class="container">
+    <h1>The Glam Bar</h1>
+    <input type="text" id="searchBar" placeholder="Search products..." />
+    <nav class="categories">
+  <button class="category-btn" data-category="all">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/view-all.png" alt="All" />
+    All
+  </button>
+  <button class="category-btn" data-category="electronics">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/electronics.png" alt="Electronics" />
+    Electronics
+  </button>
+  <button class="category-btn" data-category="fashion">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/clothes.png" alt="Fashion" />
+    Fashion
+  </button>
+  <button class="category-btn" data-category="beauty">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/lipstick.png" alt="Beauty" />
+    Beauty
+  </button>
+</nav>
+  </div>
+</header>
+
+ <section class="banner">
+    <img src="images/banner.jpg" alt="Mandie Banner" />
+    <div class="banner-text">
+      <h2>We import everything from China</h2>
+      <p>Sea shipping · Air shipping</p>
+    </div>
+  </section>
+
+  <main class="catalog">
+    <div class="product">
+      <img src="images/silver crest electric cooker.jpg" alt="Silver Crest Electric Rice Cooker" />
+      <div class="info">
+        <h3>Silver crest electric rice cooker</h3>
+        <p>350ghc</p>
+      </div>
+    
+    </div>
+
+   <div class="product" data-category="electronics">
+  <img src="images/Electric lunch box.jpg" alt="Electric lunch box" />
+  <div class="info">
+    <h3>Silver crest electric rice cooker</h3>
+    <p>350ghc</p>
+  </div>
+</div>
+
+<div class="product" data-category="fashion">
+  <img src="images/shoe rack.jpg" alt="3 in 1 Shoe Rack" />
+  <div class="info">
+    <h3>3 in 1 shoe rack</h3>
+    <p>260ghc</p>
+  </div>
+</div>
+
+
+    <!-- Add more products in the same format -->
+
+  </main>
+<script>
+  const searchBar = document.getElementById("searchBar");
+  const products = document.querySelectorAll(".product");
+  const categoryBtns = document.querySelectorAll(".category-btn");
+
+  searchBar.addEventListener("input", () => {
+    const query = searchBar.value.toLowerCase();
+    products.forEach(product => {
+      const title = product.querySelector("h3").textContent.toLowerCase();
+      product.style.display = title.includes(query) ? "block" : "none";
+    });
+  });
+
+  categoryBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const category = btn.getAttribute("data-category");
+      categoryBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      products.forEach(product => {
+        const productCategory = product.getAttribute("data-category");
+        product.style.display =
+          category === "all" || productCategory === category ? "block" : "none";
+      });
+    });
+  });
+
+  
+</script>
+
+
+<a href="https://wa.me/233240836488" class="whatsapp-float" target="_blank">
+  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp">
+</a>
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <h4>The Glam Bar</h4>
+      <p>We import everything from China — beauty, fashion, electronics & more.</p>
+      <p>oseik711@gmail.com</p>
+      <p>+233 240 836 488</p>
+    </div>
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">WhatsApp</a>
+    </div>
+    <div class="footer-copy">
+      &copy; 2025 The Glam Bar. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
